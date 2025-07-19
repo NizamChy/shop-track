@@ -60,6 +60,9 @@ const AnimatedTab = () => {
 
 export default AnimatedTab;
 
+// bg-[#2B4DC994]
+//  <tr className="bg-[#2B4DC994] border-b text-xs md:text-sm text-center text-white font-bold">
+
 // "use client";
 
 // import { useState } from "react";

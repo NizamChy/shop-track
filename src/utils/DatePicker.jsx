@@ -5,7 +5,6 @@ import React, { useState } from "react";
 function DatePicker() {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  // Format the date to YYYY-MM-DD for the input value
   const formattedDate = selectedDate.toISOString().substring(0, 10);
 
   return (
@@ -13,6 +12,7 @@ function DatePicker() {
       <label htmlFor="todayDate" className="text-nowrap">
         Select Date:
       </label>
+
       <input
         type="date"
         id="todayDate"
