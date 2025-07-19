@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Roboto_Slab } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
+import { OrderProvider } from "@/context/OrderContext";
 
 const RobotoSlab = Roboto_Slab({
   weight: ["300", "400", "500", "600", "700"],
@@ -16,8 +17,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={RobotoSlab.className}>
-        <Navbar />
-        {children}
+        <OrderProvider>
+          <Navbar />
+          {children}
+        </OrderProvider>
       </body>
     </html>
   );

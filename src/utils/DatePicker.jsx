@@ -1,23 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import { useOrder } from "@/context/OrderContext";
 
 function DatePicker() {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
-  const formattedDate = selectedDate.toISOString().substring(0, 10);
+  const { date, setDate } = useOrder();
+  const formattedDate = date.toISOString().substring(0, 10);
 
   return (
     <div className="flex justify-evenly items-center">
       <label htmlFor="todayDate" className="text-nowrap">
         Select Date:
       </label>
-
       <input
         type="date"
         id="todayDate"
         value={formattedDate}
-        onChange={(e) => setSelectedDate(new Date(e.target.value))}
+        onChange={(e) => setDate(new Date(e.target.value))}
       />
     </div>
   );

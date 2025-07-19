@@ -20,9 +20,9 @@ const FloatingInput = ({
           id={id}
           value={value}
           onChange={onChange}
-          className={`block w-full px-4 py-2 bg-transparent border-2 rounded-md appearance-none outline-none transition-all resize-none
+          className={`block w-full px-4 py-2 bg-transparent border rounded-md appearance-none outline-none transition-all resize-none
                       ${
-                        isFocused ? "border-blue-500" : "border-gray-300"
+                        isFocused ? "border-teal-500" : "border-gray-300"
                       } ${size}`}
           onFocus={() => setIsFocused(true)}
           onBlur={(e) => setIsFocused(e.target.value.length > 0)}
@@ -34,9 +34,9 @@ const FloatingInput = ({
           id={id}
           value={value}
           onChange={onChange}
-          className={`block w-full px-4 py-2 bg-transparent border-2 rounded-md appearance-none outline-none transition-all
+          className={`block w-full px-4 py-2 bg-transparent border rounded-md appearance-none outline-none transition-all
                       ${
-                        isFocused ? "border-blue-500" : "border-gray-300"
+                        isFocused ? "border-teal-500" : "border-gray-300"
                       } ${size}`}
           onFocus={() => setIsFocused(true)}
           onBlur={(e) => setIsFocused(e.target.value.length > 0)}
@@ -47,7 +47,7 @@ const FloatingInput = ({
         className={`absolute left-4 transition-all pointer-events-none text-sm bg-white rounded-lg px-1 
                     ${
                       isFocused || value
-                        ? "-top-2 text-xs text-blue-500"
+                        ? "-top-2 text-xs text-teal-500"
                         : `top-3 ${size} text-gray-400`
                     }
                   `}

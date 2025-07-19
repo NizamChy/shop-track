@@ -1,31 +1,30 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import { useOrder } from "@/context/OrderContext";
 import FloatingInput from "../FloatingInput/FloatingInput";
 
 const CustomerInfo = () => {
-  const [phone, setPhone] = useState("");
-  const [customerName, setCustomerName] = useState("");
+  const { customerInfo, updateCustomerInfo } = useOrder();
 
   return (
-    <div className="p-4 my-2 flex flex-col sm:flex-row gap-4 justify-between">
+    <div className="p-4 flex flex-col sm:flex-row gap-4 justify-between">
       <div className="w-full">
         <FloatingInput
           id="name"
           size="text-base"
           label="Customer name"
-          value={customerName}
-          onChange={(e) => setCustomerName(e.target.value)}
+          value={customerInfo.name}
+          onChange={(e) => updateCustomerInfo("name", e.target.value)}
         />
       </div>
-
       <div className="w-full">
         <FloatingInput
           id="phone"
           size="text-base"
           label="Phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          value={customerInfo.phone}
+          onChange={(e) => updateCustomerInfo("phone", e.target.value)}
         />
       </div>
     </div>
