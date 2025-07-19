@@ -20,6 +20,7 @@ const ChargesForm = () => {
           name="vat"
           // value={charges.vat}
           onChange={handleChange}
+          placeholder="%"
           className="w-24 px-2 py-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
         />
       </div>
@@ -30,6 +31,7 @@ const ChargesForm = () => {
           type="text"
           name="deliveryCharge"
           // value={charges.deliveryCharge}
+          placeholder="৳"
           onChange={handleChange}
           className="w-28 px-2 py-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
         />
@@ -40,6 +42,7 @@ const ChargesForm = () => {
         <input
           type="text"
           name="discount"
+          placeholder="৳"
           // value={charges.discount}
           onChange={handleChange}
           className="w-24 px-2 py-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
