@@ -10,6 +10,11 @@ const CalculateTotal = () => {
   const total = calculateTotal();
   const vatAmount = (subtotal * charges.vat) / 100;
 
+  const handlePrintClick = () => {
+    window.print();
+    printOrder();
+  };
+
   return (
     <>
       <div className="flex flex-col justify-end items-end p-4 pe-10 lg:pe-16">
@@ -36,7 +41,8 @@ const CalculateTotal = () => {
       <div className="ps-10">
         <button
           className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-          onClick={printOrder}
+          onClick={handlePrintClick}
+          // onClick={printOrder}
         >
           Print
         </button>
