@@ -21,7 +21,7 @@ const AddItem = () => {
 
   return (
     <div className="p-4">
-      <div className="p-6 mb-8 bg-white rounded-lg shadow-md max-w-md mx-auto">
+      <div className="p-6 mb-8 bg-white border rounded-lg shadow max-w-md mx-auto">
         <h2 className="text-xl font-bold mb-4 text-gray-800">Add New Item</h2>
         <form className="space-y-4">
           <div>
