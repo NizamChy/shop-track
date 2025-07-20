@@ -2,9 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { NAV_ITEMS } from "@/utils/constant";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 
 const Navbar = () => {
   const pathname = usePathname();
