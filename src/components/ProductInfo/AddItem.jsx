@@ -60,7 +60,7 @@ const AddItem = () => {
               </label>
               <input
                 type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="w-full px-3 py-2 border border-gray-300 bg-slate-50 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
                 placeholder="Item name"
               />
             </div>
@@ -71,7 +71,7 @@ const AddItem = () => {
               </label>
               <input
                 type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="w-full px-3 py-2 border border-gray-300 bg-slate-50 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
                 placeholder="৳"
                 step="0.01"
               />
