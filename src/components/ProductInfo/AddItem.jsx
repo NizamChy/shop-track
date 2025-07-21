@@ -177,7 +177,7 @@ const AddItem = () => {
                 name="price"
                 value={formData.price}
                 onChange={handleInputChange}
-                className="w-full px-3 py-2 border border-gray-300 bg-slate-50 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
+                className="w-full px-3 py-2 border border-gray-300 bg-slate-50 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500 appearance-none"
                 placeholder="৳"
                 step="0.01"
                 required
