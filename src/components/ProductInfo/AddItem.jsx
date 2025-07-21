@@ -146,7 +146,7 @@ const AddItem = () => {
                     file:bg-violet-50 file:text-violet-700
                     hover:file:bg-violet-100 cursor-pointer"
                   accept="image/*"
-                  required={!itemToEdit}
+                  // required={!itemToEdit}
                 />
               </label>
             </div>

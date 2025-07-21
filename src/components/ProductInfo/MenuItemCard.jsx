@@ -56,7 +56,11 @@ const MenuItemCard = ({ item }) => {
         <div className="flex items-center gap-4">
           <div className="relative w-16 h-16 rounded-lg overflow-hidden">
             <Image
-              src={item.image}
+              src={
+                item?.image
+                  ? item?.image
+                  : "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"
+              }
               alt={item.name}
               fill
               className="object-cover"
