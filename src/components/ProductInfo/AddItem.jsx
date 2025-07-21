@@ -7,7 +7,7 @@ const AddItem = () => {
   const { addItem, updateItem, itemToEdit, setItemToEdit } = useMenu();
 
   const [previewImg, setPreviewImg] = useState(
-    "https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Logo-Transparent-Free-PNG.png"
+    "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"
   );
   const [formData, setFormData] = useState({
     name: "",
@@ -30,8 +30,9 @@ const AddItem = () => {
         price: "",
         image: null,
       });
+
       setPreviewImg(
-        "https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Logo-Transparent-Free-PNG.png"
+        "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"
       );
     }
   }, [itemToEdit]);
@@ -88,7 +89,7 @@ const AddItem = () => {
         image: null,
       });
       setPreviewImg(
-        "https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Logo-Transparent-Free-PNG.png"
+        "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"
       );
     } catch (error) {
       console.error("Error saving item:", error);
@@ -143,7 +144,7 @@ const AddItem = () => {
                     file:rounded-full file:border-0
                     file:text-sm file:font-semibold
                     file:bg-violet-50 file:text-violet-700
-                    hover:file:bg-violet-100"
+                    hover:file:bg-violet-100 cursor-pointer"
                   accept="image/*"
                   required={!itemToEdit}
                 />
