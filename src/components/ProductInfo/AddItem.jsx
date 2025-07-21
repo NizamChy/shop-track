@@ -98,9 +98,19 @@ const AddItem = () => {
   };
 
   const uploadImage = async (imageFile) => {
-    // Implement your image upload logic here (e.g., to ImgBB)
-    // For demo purposes, we'll just return a mock URL
-    return URL.createObjectURL(imageFile);
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    const response = await fetch(
+      "https://api.imgbb.com/1/upload?key=68458734269d038c11ca0ffc8338e965",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+    return data.data.url;
   };
 
   return (
