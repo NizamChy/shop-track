@@ -1,6 +1,6 @@
 "use client";
 
-import { MENU_ITEMS } from "@/utils/constant";
+import { useMenu } from "./MenuContext";
 import React, { createContext, useState, useContext } from "react";
 
 const OrderContext = createContext();
@@ -21,7 +21,9 @@ export const OrderProvider = ({ children }) => {
     discount: 0,
   });
 
-  const filteredMenuItems = MENU_ITEMS.filter((item) =>
+  const { menuItems } = useMenu();
+
+  const filteredMenuItems = menuItems.filter((item) =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 

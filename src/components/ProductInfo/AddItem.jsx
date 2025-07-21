@@ -1,12 +1,40 @@
 "use client";
 
-import React from "react";
-import { useState } from "react";
+import { useMenu } from "@/context/MenuContext";
+import React, { useState, useEffect } from "react";
 
 const AddItem = () => {
+  const { addItem, updateItem, itemToEdit, setItemToEdit } = useMenu();
+
   const [previewImg, setPreviewImg] = useState(
     "https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Logo-Transparent-Free-PNG.png"
   );
+  const [formData, setFormData] = useState({
+    name: "",
+    price: "",
+    image: null,
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (itemToEdit) {
+      setFormData({
+        name: itemToEdit.name,
+        price: itemToEdit.price,
+        image: itemToEdit.image,
+      });
+      setPreviewImg(itemToEdit.image);
+    } else {
+      setFormData({
+        name: "",
+        price: "",
+        image: null,
+      });
+      setPreviewImg(
+        "https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Logo-Transparent-Free-PNG.png"
+      );
+    }
+  }, [itemToEdit]);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -16,14 +44,72 @@ const AddItem = () => {
         setPreviewImg(reader.result);
       };
       reader.readAsDataURL(file);
+      setFormData({ ...formData, image: file });
     }
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleCancel = () => {
+    setItemToEdit(null);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      let imageUrl = formData.image;
+
+      if (formData.image instanceof File) {
+        const uploadedUrl = await uploadImage(formData.image);
+        imageUrl = uploadedUrl;
+      }
+
+      const itemData = {
+        id: itemToEdit ? itemToEdit.id : Date.now(),
+        name: formData.name,
+        price: Number(formData.price),
+        image: imageUrl,
+      };
+
+      if (itemToEdit) {
+        updateItem(itemData);
+      } else {
+        addItem(itemData);
+      }
+
+      setFormData({
+        name: "",
+        price: "",
+        image: null,
+      });
+      setPreviewImg(
+        "https://www.pngplay.com/wp-content/uploads/8/Upload-Icon-Logo-Transparent-Free-PNG.png"
+      );
+    } catch (error) {
+      console.error("Error saving item:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const uploadImage = async (imageFile) => {
+    // Implement your image upload logic here (e.g., to ImgBB)
+    // For demo purposes, we'll just return a mock URL
+    return URL.createObjectURL(imageFile);
+  };
+
   return (
-    <div className="p-4">
-      <div className="p-6 mb-8 bg-white border rounded-lg shadow max-w-md mx-auto">
-        <h2 className="text-xl font-bold mb-4 text-gray-800">Add New Item</h2>
-        <form className="space-y-4">
+    <div id="add-edit-item-section" className="p-4">
+      <div className="p-6 mb-8 border rounded-lg shadow max-w-md mx-auto">
+        <h2 className="text-xl font-bold mb-4 text-gray-800">
+          {itemToEdit ? "Edit Item" : "Add New Item"}
+        </h2>
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Item Image
@@ -40,6 +126,7 @@ const AddItem = () => {
                 <span className="sr-only">Choose item photo</span>
                 <input
                   type="file"
+                  name="image"
                   onChange={handleFileChange}
                   className="block w-full text-sm text-slate-500
                     file:mr-4 file:py-2 file:px-4
@@ -48,6 +135,7 @@ const AddItem = () => {
                     file:bg-violet-50 file:text-violet-700
                     hover:file:bg-violet-100"
                   accept="image/*"
+                  required={!itemToEdit}
                 />
               </label>
             </div>
@@ -60,8 +148,12 @@ const AddItem = () => {
               </label>
               <input
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 bg-slate-50 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
                 placeholder="Item name"
+                required
               />
             </div>
 
@@ -70,20 +162,41 @@ const AddItem = () => {
                 Price
               </label>
               <input
-                type="text"
+                type="number"
+                name="price"
+                value={formData.price}
+                onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 bg-slate-50 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
                 placeholder="৳"
                 step="0.01"
+                required
               />
             </div>
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 px-4 rounded-md transition duration-200"
-          >
-            Add Item
-          </button>
+          <div className="flex gap-2">
+            <button
+              type="submit"
+              className="flex-1 bg-teal-600 hover:bg-teal-700 text-white py-2 px-4 rounded-md transition duration-200 disabled:opacity-50"
+              disabled={isLoading}
+            >
+              {isLoading
+                ? "Saving..."
+                : itemToEdit
+                ? "Update Item"
+                : "Add Item"}
+            </button>
+
+            {itemToEdit && (
+              <button
+                type="button"
+                onClick={handleCancel}
+                className="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md transition duration-200"
+              >
+                Cancel
+              </button>
+            )}
+          </div>
         </form>
       </div>
     </div>

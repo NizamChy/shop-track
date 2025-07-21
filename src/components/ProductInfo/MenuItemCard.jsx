@@ -1,30 +1,65 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { useMenu } from "@/context/MenuContext";
+import { FiEdit2, FiTrash2 } from "react-icons/fi";
 
 const MenuItemCard = ({ item }) => {
+  const { deleteItem, setItemToEdit } = useMenu();
+
+  const handleDelete = () => {
+    if (confirm("Are you sure you want to delete this item?")) {
+      deleteItem(item.id);
+    }
+  };
+
+  const handleEdit = () => {
+    setItemToEdit(item);
+    document.getElementById("add-edit-item-section").scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
-      <div className="flex max-w-[480px] items-center gap-5 rounded-3xl border p-3.5 md:pr-12 transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer">
-        <Image
-          className="h-32 w-32 rounded-2xl object-cover md:h-40 md:w-40 transition-opacity duration-300"
-          src={item.image}
-          width={172}
-          height={172}
-          alt={item.name}
-        />
-        <div>
-          <div className="w-40 md:w-56">
-            <h2 className="text-base font-medium text-gray-800 md:text-lg">
+      <div className="flex justify-between items-center w-full p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 cursor-pointer bg-white">
+        <div className="flex items-center gap-4">
+          <div className="relative w-16 h-16 rounded-lg overflow-hidden">
+            <Image
+              src={item.image}
+              alt={item.name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 64px) 100vw"
+            />
+          </div>
+
+          <div className="space-y-1">
+            <h3 className="text-lg font-semibold text-gray-800 line-clamp-1">
               {item.name}
-            </h2>
+            </h3>
+            <p className="text-xl font-bold text-teal-600">৳{item.price}</p>
           </div>
-          <div className="flex items-end justify-between">
-            <div>
-              <p className="text-2xl font-semibold text-gray-800 py-2">
-                ৳{item.price}
-              </p>
-            </div>
-          </div>
+        </div>
+
+        <div className="flex gap-4">
+          <button
+            onClick={handleEdit}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-600 hover:text-teal-600 hover:bg-teal-50 rounded-md transition-colors"
+            aria-label="Edit item"
+          >
+            <FiEdit2 size={16} />
+            <span>Edit</span>
+          </button>
+          <button
+            onClick={handleDelete}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
+            aria-label="Delete item"
+          >
+            <FiTrash2 size={16} />
+            <span>Delete</span>
+          </button>
         </div>
       </div>
     </>
