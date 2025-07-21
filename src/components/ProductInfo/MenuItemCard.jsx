@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { toast } from "sonner";
 import { useMenu } from "@/context/MenuContext";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 
@@ -9,9 +10,37 @@ const MenuItemCard = ({ item }) => {
   const { deleteItem, setItemToEdit } = useMenu();
 
   const handleDelete = () => {
-    if (confirm("Are you sure you want to delete this item?")) {
+    // if (confirm("Are you sure you want to delete this item?")) {
+    //   deleteItem(item.id);
+    // }
+
+    const handleConfirmClick = () => {
       deleteItem(item.id);
-    }
+      toast.dismiss();
+      toast.success("Item deleted successfully!");
+    };
+
+    toast(
+      <div>
+        <p className="text-base font-semibold">
+          Are you sure you want to delete this item?
+        </p>
+        <div className="flex gap-2 justify-end py-2">
+          <button
+            onClick={() => toast.dismiss()}
+            className="px-3 py-1.5 text-sm text-teal-600 bg-teal-50 rounded-md transition-colors"
+          >
+            No
+          </button>
+          <button
+            onClick={handleConfirmClick}
+            className="px-3 py-1.5 text-sm text-red-600 bg-red-50 rounded-md transition-colors"
+          >
+            Yes
+          </button>
+        </div>
+      </div>
+    );
   };
 
   const handleEdit = () => {

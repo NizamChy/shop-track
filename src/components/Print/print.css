@@ -1,0 +1,39 @@
+.column1 {
+  color: #ff0000;
+}
+
+.customFontText {
+  font-family: 'Anton';
+  font-weight: 'normal';
+  font-style: 'normal';
+}
+
+.indicator {
+  font-size: 2rem;
+  color: #ff0000;
+  font-weight: 700;
+}
+
+.relativeCSS {
+  border: solid 1px #eeeeee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  align-items: center;
+  max-width: 950px;
+  margin: 0 auto;
+}
+.relativeCSS.thermal-printer {
+  max-width: 300px;
+}
+
+.testClass {
+  /* background: #ddd; */
+}
+
+@media (max-width: 600px) {
+  /* .testClass {
+      color: rebeccapurple;
+    } */
+}

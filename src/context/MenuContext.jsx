@@ -1,5 +1,6 @@
 "use client";
 
+import { toast } from "sonner";
 import { MENU_ITEMS } from "@/utils/constant";
 import { createContext, useContext, useState, useEffect } from "react";
 
@@ -28,6 +29,8 @@ export const MenuProvider = ({ children }) => {
   const addItem = (newItem) => {
     setMenuItems([...menuItems, newItem]);
     setItemToEdit(null);
+
+    toast.success(`${newItem.name} added successfully!`);
   };
 
   const updateItem = (updatedItem) => {
@@ -35,6 +38,8 @@ export const MenuProvider = ({ children }) => {
       menuItems.map((item) => (item.id === updatedItem.id ? updatedItem : item))
     );
     setItemToEdit(null);
+
+    toast.success(`${updatedItem.name} updated successfully!`);
   };
 
   const deleteItem = (id) => {

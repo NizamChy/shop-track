@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Toaster } from "sonner";
 import { Roboto_Slab } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
 import { MenuProvider } from "@/context/MenuContext";
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
       <body className={RobotoSlab.className}>
         <MenuProvider>
           <OrderProvider>
+            <Toaster richColors position="top-center" />
             <Navbar />
             {children}
           </OrderProvider>
