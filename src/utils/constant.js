@@ -35,4 +35,10 @@ export const NAV_ITEMS = [
   { href: "/business", label: "Business Info" },
 ];
 
-// 300 width, 950 height - thermal printer
+export const STORE_INFO = {
+  store_name: "Shop Track",
+  contact: "01682872654",
+  location: "Jobeda Villa, Mirzapur, Muradpur",
+};
+
+// 300 width, 950 height - thermal printer paper size

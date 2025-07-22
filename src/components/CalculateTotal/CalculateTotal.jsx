@@ -11,8 +11,8 @@ const CalculateTotal = () => {
   const vatAmount = (subtotal * charges.vat) / 100;
 
   const handlePrintClick = () => {
-    window.print();
     printOrder();
+    // window.print();
   };
 
   return (
