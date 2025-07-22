@@ -23,7 +23,11 @@ const AddItem = () => {
         price: itemToEdit.price,
         image: itemToEdit.image,
       });
-      setPreviewImg(itemToEdit.image);
+      setPreviewImg(
+        itemToEdit?.image
+          ? itemToEdit?.image
+          : "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"
+      );
     } else {
       setFormData({
         name: "",

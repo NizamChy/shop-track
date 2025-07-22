@@ -12,7 +12,7 @@ const ChargesForm = () => {
   };
 
   return (
-    <form className="flex items-center justify-center md:justify-end gap-4 p-4 bg-gray-100 mx-4 rounded-lg">
+    <form className="flex items-center justify-center md:justify-end gap-1 sm:gap-4 p-4 bg-gray-100 mx-4 rounded-lg">
       <div className="flex flex-col text-sm">
         <label className="mb-1 text-gray-600">VAT (%)</label>
         <input

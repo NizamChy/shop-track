@@ -52,8 +52,8 @@ const MenuItemCard = ({ item }) => {
 
   return (
     <>
-      <div className="flex justify-between items-center w-full p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 cursor-pointer bg-white">
-        <div className="flex items-center gap-4">
+      <div className="flex justify-between items-center w-full p-1 sm:p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 cursor-pointer bg-white">
+        <div className="flex items-center gap-2 sm:gap-4">
           <div className="relative w-16 h-16 rounded-lg overflow-hidden">
             <Image
               src={
@@ -69,30 +69,36 @@ const MenuItemCard = ({ item }) => {
           </div>
 
           <div className="space-y-1">
-            <h3 className="text-lg font-semibold text-gray-800 line-clamp-1">
+            <h3 className="text-xs sm:text-lg font-semibold text-gray-800 line-clamp-2">
               {item.name}
             </h3>
-            <p className="text-xl font-bold text-teal-600">৳{item.price}</p>
+            <p className="text-sm sm:text-xl font-bold text-teal-600">
+              ৳{item.price}
+            </p>
           </div>
         </div>
 
-        <div className="flex gap-4">
-          <button
-            onClick={handleEdit}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-600 hover:text-teal-600 hover:bg-teal-50 rounded-md transition-colors"
-            aria-label="Edit item"
-          >
-            <FiEdit2 size={16} />
-            <span>Edit</span>
-          </button>
-          <button
-            onClick={handleDelete}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
-            aria-label="Delete item"
-          >
-            <FiTrash2 size={16} />
-            <span>Delete</span>
-          </button>
+        <div className="flex flex-col justify-end items-end sm:flex-row gap-1 sm:gap-4">
+          <div>
+            <button
+              onClick={handleEdit}
+              className="flex items-center gap-1.5 px-2 sm:px-3 py-1.5 text-xs sm:text-sm text-gray-600 hover:text-teal-600 hover:bg-teal-50 rounded-md transition-colors"
+              aria-label="Edit item"
+            >
+              <FiEdit2 size={16} />
+              <span>Edit</span>
+            </button>
+          </div>
+          <div>
+            <button
+              onClick={handleDelete}
+              className="flex items-center gap-1.5 px-2 sm:px-3 py-1.5 text-xs sm:text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-md transition-colors"
+              aria-label="Delete item"
+            >
+              <FiTrash2 size={16} />
+              <span>Delete</span>
+            </button>
+          </div>
         </div>
       </div>
     </>
