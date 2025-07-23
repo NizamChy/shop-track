@@ -468,6 +468,8 @@ export default AddItem;
 
 // export default AddItem;
 
+// orderInfo to be print
+
 export const orderInfo = {
   date: "2025-07-22T10:00:03.927Z",
   storeInfo: {
