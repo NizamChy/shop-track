@@ -1,10 +1,12 @@
 "use client";
 
+import { toast } from "sonner";
 import { useMenu } from "@/context/MenuContext";
 import React, { useState, useEffect } from "react";
 
 const AddItem = () => {
-  const { addItem, updateItem, itemToEdit, setItemToEdit } = useMenu();
+  const { addItem, updateItem, itemToEdit, setItemToEdit, menuItems } =
+    useMenu();
 
   const [previewImg, setPreviewImg] = useState(
     "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"
@@ -84,6 +86,16 @@ const AddItem = () => {
       if (itemToEdit) {
         updateItem(itemData);
       } else {
+        const newItemName = formData.name.trim().toLowerCase();
+
+        if (
+          menuItems.find(
+            (item) => item.name.trim().toLowerCase() === newItemName
+          )
+        ) {
+          return toast.warning("Similar item already exists!");
+        }
+
         addItem(itemData);
       }
 
@@ -183,7 +195,8 @@ const AddItem = () => {
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 bg-slate-50 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500 appearance-none"
                 placeholder="৳"
-                step="0.01"
+                step="1"
+                min="0"
                 required
               />
             </div>

@@ -7,7 +7,7 @@ const OrderTable = () => {
   const { orderItems, updateQuantity, removeItem } = useOrder();
 
   return (
-    <div className="bg-white overflow-auto p-4">
+    <div className="bg-white overflow-auto p-2 lg:p-4">
       <h2 className="text-2xl mb-4">Order Items</h2>
       <div className="relative overflow-auto">
         <div className="overflow-x-auto rounded-lg">
@@ -42,8 +42,13 @@ const OrderTable = () => {
                   key={item.id}
                   className="border-b text-xs md:text-sm text-center text-gray-800"
                 >
-                  <td className="p-2 md:p-4 border-r">{item.name}</td>
-                  <td className="p-2 md:p-4 border-r flex justify-center">
+                  {/* <td className="p-2 md:p-4 border-r">{item.name}</td> */}
+                  <td className="p-0.5 md:p-4 border-r max-w-16">
+                    <p className="break-words overflow-hidden text-ellipsis line-clamp-3">
+                      {item.name}
+                    </p>
+                  </td>
+                  <td className="p-2 md:p-4 flex justify-center items-center">
                     <div className="flex items-center text-sm font-semibold">
                       <button
                         onClick={() => updateQuantity(item.id, "decrease")}
@@ -62,7 +67,9 @@ const OrderTable = () => {
                       </button>
                     </div>
                   </td>
-                  <td className="p-2 md:p-4 border-r">{item.price}৳</td>
+                  <td className="p-2 md:p-4 border-r border-l">
+                    {item.price}৳
+                  </td>
                   <td className="p-2 md:p-4 border-r">
                     {item.price * item.quantity}৳
                   </td>

@@ -16,11 +16,13 @@ const ChargesForm = () => {
       <div className="flex flex-col text-sm">
         <label className="mb-1 text-gray-600">VAT (%)</label>
         <input
-          type="text"
+          min="0"
+          step="1"
           name="vat"
+          type="number"
+          placeholder="%"
           // value={charges.vat}
           onChange={handleChange}
-          placeholder="%"
           className="w-24 px-2 py-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
         />
       </div>
@@ -28,11 +30,13 @@ const ChargesForm = () => {
       <div className="flex flex-col text-sm">
         <label className="mb-1 text-gray-600">Delivery Charge</label>
         <input
-          type="text"
-          name="deliveryCharge"
-          // value={charges.deliveryCharge}
+          min="0"
+          step="1"
+          type="number"
           placeholder="৳"
+          name="deliveryCharge"
           onChange={handleChange}
+          // value={charges.deliveryCharge}
           className="w-28 px-2 py-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
         />
       </div>
@@ -40,11 +44,13 @@ const ChargesForm = () => {
       <div className="flex flex-col text-sm">
         <label className="mb-1 text-gray-600">Discount</label>
         <input
-          type="text"
+          min="0"
+          step="1"
+          type="number"
           name="discount"
           placeholder="৳"
-          // value={charges.discount}
           onChange={handleChange}
+          // value={charges.discount}
           className="w-24 px-2 py-1 border rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
         />
       </div>
