@@ -316,6 +316,17 @@ export const OrderProvider = ({ children }) => {
     </html>
   `;
 
+    // const orderData = {
+    //   date,
+    //   storeInfo: STORE_INFO,
+    //   customerInfo,
+    //   orderItems,
+    //   charges,
+    //   subtotal: calculateSubtotal(),
+    //   total: calculateTotal(),
+    // };
+    // console.log("Order Data:", orderData);
+
     const printWindow = window.open("", "PRINT");
     printWindow.document.write(orderHtml);
     printWindow.document.close();

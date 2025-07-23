@@ -4,6 +4,7 @@ import { Roboto_Slab } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
 import { MenuProvider } from "@/context/MenuContext";
 import { OrderProvider } from "@/context/OrderContext";
+import { OrderHistoryProvider } from "@/context/OrderHistoryContext";
 
 const RobotoSlab = Roboto_Slab({
   weight: ["300", "400", "500", "600", "700"],
@@ -19,13 +20,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={RobotoSlab.className}>
-        <MenuProvider>
-          <OrderProvider>
-            <Toaster richColors position="top-center" />
-            <Navbar />
-            {children}
-          </OrderProvider>
-        </MenuProvider>
+        <OrderHistoryProvider>
+          <MenuProvider>
+            <OrderProvider>
+              <Toaster richColors position="top-center" />
+              <Navbar />
+              {children}
+            </OrderProvider>
+          </MenuProvider>
+        </OrderHistoryProvider>
       </body>
     </html>
   );
