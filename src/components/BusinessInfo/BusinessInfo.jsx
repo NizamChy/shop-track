@@ -1,19 +1,40 @@
 "use client";
 
 import Calendar from "react-calendar";
-import React, { useState } from "react";
 import "react-calendar/dist/Calendar.css";
 import { LuCalendarDays } from "react-icons/lu";
+import React, { useState, useEffect } from "react";
 import { useOrderHistory } from "@/context/OrderHistoryContext";
 
 const BusinessInfo = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showCalendar, setShowCalendar] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const { getOrdersByDate } = useOrderHistory();
 
   const dailyOrders = getOrdersByDate(selectedDate);
   const totalSales = dailyOrders.reduce((sum, order) => sum + order.total, 0);
+
+  const formatDate = (date) => {
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
+  const formatDateForDisplay = (date) => {
+    return date.toLocaleDateString("en-US", {
+      month: "numeric",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
 
   return (
     <div className="p-4">
@@ -24,44 +45,29 @@ const BusinessInfo = () => {
         onClick={() => setShowCalendar(!showCalendar)}
       >
         <span className="flex items-center justify-center gap-2">
-          <LuCalendarDays className="text-xl" /> Select Date
+          <LuCalendarDays className="text-xl" />
+          {showCalendar ? formatDate(selectedDate) : "Select Date"}
         </span>
       </button>
 
-      {showCalendar && (
-        <div className="mb-6 mt-2 transition-all duration-300 ease-in-out">
+      <div
+        className={`mb-4 transition-all duration-300 ease-in-out overflow-hidden ${
+          showCalendar ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        {isClient && (
           <Calendar
             onChange={setSelectedDate}
-            onClickDay={() => setShowCalendar(!showCalendar)}
+            onClickDay={() => setShowCalendar(false)}
             value={selectedDate}
             className="border rounded p-2"
           />
-        </div>
-      )}
-
-      {/* <div className="flex justify-evenly items-center">
-      <label htmlFor="todayDate" className="text-nowrap">
-        Select Date:
-      </label>
-      <input
-        type="date"
-        id="todayDate"
-        value={formattedDate}
-        onChange={(e) => setDate(new Date(e.target.value))}
-      />
-    </div> */}
-
-      {/* <div className="mb-6">
-        <Calendar
-          onChange={setSelectedDate}
-          value={selectedDate}
-          className="border rounded p-2"
-        />
-      </div> */}
+        )}
+      </div>
 
       <div className="bg-white p-4 rounded shadow">
         <h2 className="text-xl font-semibold mb-2">
-          Sales for {selectedDate?.toLocaleDateString()}
+          Sales for {formatDate(selectedDate)}
         </h2>
 
         <div className="mb-4">
@@ -80,7 +86,10 @@ const BusinessInfo = () => {
                 <div className="flex justify-between mb-2">
                   <p className="font-medium">Order #{index + 1}</p>
                   <p className="text-gray-600">
-                    {new Date(order.date).toLocaleTimeString()}
+                    {new Date(order.date).toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
                   </p>
                 </div>
 
