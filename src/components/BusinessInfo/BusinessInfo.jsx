@@ -28,14 +28,6 @@ const BusinessInfo = () => {
     });
   };
 
-  const formatDateForDisplay = (date) => {
-    return date.toLocaleDateString("en-US", {
-      month: "numeric",
-      day: "numeric",
-      year: "numeric",
-    });
-  };
-
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Sales Overview</h1>
