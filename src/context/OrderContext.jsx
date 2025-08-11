@@ -80,120 +80,6 @@ export const OrderProvider = ({ children }) => {
     return subtotal + vatAmount + charges.deliveryCharge - charges.discount;
   };
 
-  // const printOrder = () => {
-  //   const orderData = {
-  //     date,
-  //     storeInfo: STORE_INFO,
-  //     customerInfo,
-  //     orderItems,
-  //     charges,
-  //     subtotal: calculateSubtotal(),
-  //     total: calculateTotal(),
-  //   };
-  //   console.log("Order Data:", orderData);
-  // };
-
-  // const printOrder = () => {
-  //   const orderHtml = `
-  //   <html>
-  //     <head>
-  //       <style>
-  //         @media print {
-  //           @page {
-  //             size: 80mm 250mm; /* 300px ~ 80mm, height can be more if needed */
-  //             margin: 0;
-  //           }
-  //           body {
-  //             margin: 0;
-  //           }
-  //         }
-
-  //         body {
-  //           font-family: monospace;
-  //           width: 80mm;
-  //           padding: 10px;
-  //           // font-size: 12px;
-  //           font-size: 18px;
-  //           color: #000;
-  //         }
-
-  //         h2, h3 {
-  //           text-align: center;
-  //           margin: 4px 0;
-  //         }
-
-  //         .item {
-  //           display: flex;
-  //           justify-content: space-between;
-  //           margin-bottom: 4px;
-  //         }
-
-  //         .total {
-  //           font-weight: bold;
-  //           border-top: 1px dashed #000;
-  //           padding-top: 6px;
-  //         }
-
-  //         hr {
-  //           border: none;
-  //           border-top: 1px dashed #000;
-  //           margin: 4px 0;
-  //         }
-
-  //         .center {
-  //           text-align: center;
-  //         }
-  //       </style>
-  //     </head>
-  //     <body>
-  //       <h2>${STORE_INFO.store_name}</h2>
-  //       <h3>${STORE_INFO.location}</h3>
-  //       <p class="center">Call: ${STORE_INFO.contact}</p>
-  //       <hr />
-  //       <p>Customer: ${customerInfo.name || "N/A"}</p>
-  //       <p>Phone: ${customerInfo.phone || "N/A"}</p>
-  //       <p>Date: ${new Date(date).toLocaleString()}</p>
-  //       <hr />
-
-  //       ${orderItems
-  //         .map(
-  //           (item) => `
-  //           <div class="item">
-  //             <span>${item.name} x${item.quantity}</span>
-  //             <span>${item.price * item.quantity}৳</span>
-  //           </div>
-  //         `
-  //         )
-  //         .join("")}
-
-  //       <hr />
-  //       <div class="item"><span>Subtotal</span><span>${calculateSubtotal()}৳</span></div>
-  //       <div class="item"><span>VAT (${charges.vat}%)</span><span>${(
-  //     (calculateSubtotal() * charges.vat) /
-  //     100
-  //   ).toFixed(2)}৳</span></div>
-  //       <div class="item"><span>Delivery</span><span>${
-  //         charges.deliveryCharge
-  //       }৳</span></div>
-  //       <div class="item"><span>Discount</span><span>-${
-  //         charges.discount
-  //       }৳</span></div>
-  //       <div class="item total"><span>Total</span><span>${calculateTotal()}৳</span></div>
-  //       <hr />
-  //       <p class="center">Thanks for your order!</p>
-  //     </body>
-  //   </html>
-  // `;
-
-  //   // const printWindow = window.open("", "PRINT", "width=300,height=950");
-  //   const printWindow = window.open("", "PRINT");
-  //   printWindow.document.write(orderHtml);
-  //   printWindow.document.close();
-  //   printWindow.focus();
-  //   printWindow.print();
-  //   printWindow.close();
-  // };
-
   const printOrder = () => {
     const orderHtml = `
     <html>
@@ -315,17 +201,6 @@ export const OrderProvider = ({ children }) => {
       </body>
     </html>
   `;
-
-    // const orderData = {
-    //   date,
-    //   storeInfo: STORE_INFO,
-    //   customerInfo,
-    //   orderItems,
-    //   charges,
-    //   subtotal: calculateSubtotal(),
-    //   total: calculateTotal(),
-    // };
-    // console.log("Order Data:", orderData);
 
     const printWindow = window.open("", "PRINT");
     printWindow.document.write(orderHtml);
