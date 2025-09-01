@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed z-20 bg-gradient-to-r from-teal-50 to-teal-100 w-full border-b border-gray-200 shadow-sm">
+      <div className="hidden md:block fixed z-20 bg-gradient-to-r from-teal-50 to-teal-100 w-full border-b border-gray-200 shadow-sm">
         <nav className="min-h-16 flex gap-2 justify-center items-center relative py-2">
           {/* <Link href="/">
             <div className="w-12 h-12">

@@ -9,7 +9,7 @@ import CalculateTotal from "@/components/CalculateTotal/CalculateTotal";
 const page = () => {
   return (
     <>
-      <div className="pt-20 pb-5 container mx-auto lg:max-w-2xl">
+      <div className="md:pt-20 pb-5 container mx-auto lg:max-w-2xl">
         <div className="min-h-[60vh] mx-auto border rounded-lg py-4">
           <div className="flex flex-col sm:flex-row gap-4 p-4 w-full">
             <DatePicker />

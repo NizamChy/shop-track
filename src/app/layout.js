@@ -8,6 +8,7 @@ import { OrderProvider } from "@/context/OrderContext";
 import PrivateRoute from "@/components/Auth/PrivateRoute";
 import QueryProvider from "@/components/Provider/QueryProvider";
 import { OrderHistoryProvider } from "@/context/OrderHistoryContext";
+import MobileNavbar from "@/components/Navbar/NavbarMobile";
 
 const RobotoSlab = Roboto_Slab({
   weight: ["300", "400", "500", "600", "700"],
@@ -32,7 +33,10 @@ export default function RootLayout({ children }) {
                 <OrderProvider>
                   <Toaster richColors position="top-center" />
                   <Navbar />
-                  <PrivateRoute>{children}</PrivateRoute>
+                  <PrivateRoute>
+                    <div className="pb-20 md:pb-0">{children}</div>
+                  </PrivateRoute>
+                  <MobileNavbar />
                 </OrderProvider>
               </MenuProvider>
             </OrderHistoryProvider>

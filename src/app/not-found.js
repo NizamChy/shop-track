@@ -3,7 +3,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 
 const NotFoundPage = () => {
   return (
-    <div className="m-5 lg:m-10 pt-20 min-h-[75vh] flex justify-center items-center">
+    <div className="m-5 lg:m-10 md:pt-20 min-h-[75vh] flex justify-center items-center">
       <div className="px-10 w-full flex items-center flex-col justify-center py-20 rounded-xl bg-emerald-500">
         <img
           src="https://i.ibb.co/LvLq6d3/Group-29.png"
