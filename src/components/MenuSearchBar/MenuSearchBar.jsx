@@ -34,7 +34,7 @@ const MenuSearchBar = () => {
             <div className="absolute z-20 w-full mt-2 bg-white border rounded-lg shadow-lg max-h-60 overflow-auto">
               {filteredMenuItems.map((item) => (
                 <div
-                  key={item.id}
+                  key={item?._id.toString()}
                   className="p-2 px-4 hover:bg-gray-100 cursor-pointer flex justify-between"
                   onClick={() => {
                     addOrderItem(item);

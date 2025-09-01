@@ -1,55 +1,63 @@
 "use client";
 
 import { toast } from "sonner";
-import { MENU_ITEMS } from "@/utils/constant";
-import { createContext, useContext, useState, useEffect } from "react";
+import { useShopItem } from "@/hooks/useShopItem";
+import { createContext, useContext, useState } from "react";
 
 const MenuContext = createContext();
 
 export const MenuProvider = ({ children }) => {
-  const [menuItems, setMenuItems] = useState([]);
   const [itemToEdit, setItemToEdit] = useState(null);
 
-  useEffect(() => {
-    const storedItems = localStorage.getItem("menuItems");
-    if (storedItems) {
-      setMenuItems(JSON.parse(storedItems));
-    } else {
-      localStorage.setItem("menuItems", JSON.stringify(MENU_ITEMS));
-      setMenuItems(MENU_ITEMS);
-    }
-  }, []);
+  const { useAllItem, useAddItem, useUpdateItem, useDeleteItem } =
+    useShopItem();
 
-  useEffect(() => {
-    if (menuItems.length > 0) {
-      localStorage.setItem("menuItems", JSON.stringify(menuItems));
-    }
-  }, [menuItems]);
+  const { data: menuItems = [], isLoading, isError } = useAllItem();
+  const addItemMutation = useAddItem();
+  const updateItemMutation = useUpdateItem();
+  const deleteItemMutation = useDeleteItem();
 
-  const addItem = (newItem) => {
-    setMenuItems([...menuItems, newItem]);
-    setItemToEdit(null);
-
-    toast.success(`${newItem.name} added successfully!`);
+  const addItem = async (newItem) => {
+    addItemMutation.mutate(newItem, {
+      onSuccess: () => {
+        toast.success(`${newItem.name} added successfully!`);
+        setItemToEdit(null);
+      },
+      onError: () => {
+        toast.error("Failed to add item. Try again.");
+      },
+    });
   };
 
-  const updateItem = (updatedItem) => {
-    setMenuItems(
-      menuItems.map((item) => (item.id === updatedItem.id ? updatedItem : item))
-    );
-    setItemToEdit(null);
-
-    toast.success(`${updatedItem.name} updated successfully!`);
+  const updateItem = async (updatedItem) => {
+    updateItemMutation.mutate(updatedItem, {
+      onSuccess: () => {
+        toast.success(`${updatedItem.name} updated successfully!`);
+        setItemToEdit(null);
+      },
+      onError: () => {
+        toast.error("Failed to update item. Try again.");
+      },
+    });
   };
 
-  const deleteItem = (id) => {
-    setMenuItems(menuItems.filter((item) => item.id !== id));
+  const deleteItem = async (id) => {
+    deleteItemMutation.mutate(id, {
+      onSuccess: () => {
+        toast.success("Item deleted successfully!");
+      },
+      onError: () => {
+        toast.error("Failed to delete item. Try again.");
+      },
+    });
   };
 
   return (
     <MenuContext.Provider
       value={{
         menuItems,
+        isLoading,
+        isError,
         addItem,
         updateItem,
         deleteItem,

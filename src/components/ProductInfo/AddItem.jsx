@@ -21,27 +21,29 @@ const AddItem = () => {
   useEffect(() => {
     if (itemToEdit) {
       setFormData({
-        name: itemToEdit.name,
-        price: itemToEdit.price,
-        image: itemToEdit.image,
+        name: itemToEdit?.name,
+        price: itemToEdit?.price,
+        image: itemToEdit?.image,
       });
       setPreviewImg(
-        itemToEdit?.image
-          ? itemToEdit?.image
-          : "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"
+        itemToEdit?.image ||
+          "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"
       );
     } else {
-      setFormData({
-        name: "",
-        price: "",
-        image: null,
-      });
-
-      setPreviewImg(
-        "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"
-      );
+      resetForm();
     }
   }, [itemToEdit]);
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      price: "",
+      image: null,
+    });
+    setPreviewImg(
+      "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"
+    );
+  };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -62,6 +64,7 @@ const AddItem = () => {
 
   const handleCancel = () => {
     setItemToEdit(null);
+    resetForm();
   };
 
   const handleSubmit = async (e) => {
@@ -77,7 +80,7 @@ const AddItem = () => {
       }
 
       const itemData = {
-        id: itemToEdit ? itemToEdit.id : Date.now(),
+        id: itemToEdit?._id,
         name: formData.name,
         price: Number(formData.price),
         image: imageUrl,
@@ -87,28 +90,22 @@ const AddItem = () => {
         updateItem(itemData);
       } else {
         const newItemName = formData.name.trim().toLowerCase();
-
         if (
           menuItems.find(
             (item) => item.name.trim().toLowerCase() === newItemName
           )
         ) {
-          return toast.warning("Similar item already exists!");
+          toast.warning("Similar item already exists!");
+          return;
         }
-
         addItem(itemData);
       }
 
-      setFormData({
-        name: "",
-        price: "",
-        image: null,
-      });
-      setPreviewImg(
-        "https://i.pinimg.com/564x/0c/bb/aa/0cbbaab0deff7f188a7762d9569bf1b3.jpg"
-      );
+      resetForm();
+      setItemToEdit(null);
     } catch (error) {
       console.error("Error saving item:", error);
+      toast.error("Something went wrong while saving the item.");
     } finally {
       setIsLoading(false);
     }
@@ -162,7 +159,6 @@ const AddItem = () => {
                     file:bg-violet-50 file:text-violet-700
                     hover:file:bg-violet-100 cursor-pointer"
                   accept="image/*"
-                  // required={!itemToEdit}
                 />
               </label>
             </div>

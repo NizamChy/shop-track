@@ -33,6 +33,7 @@ export const NAV_ITEMS = [
   { href: "/", label: "Add Bill" },
   { href: "/products", label: "Product Info" },
   { href: "/business", label: "Business Info" },
+  // { href: "/login", label: "Login" },
 ];
 
 export const STORE_INFO = {

@@ -3,7 +3,10 @@ import { Toaster } from "sonner";
 import { Roboto_Slab } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
 import { MenuProvider } from "@/context/MenuContext";
+import { UserProvider } from "@/context/UserContext";
 import { OrderProvider } from "@/context/OrderContext";
+import PrivateRoute from "@/components/Auth/PrivateRoute";
+import QueryProvider from "@/components/Provider/QueryProvider";
 import { OrderHistoryProvider } from "@/context/OrderHistoryContext";
 
 const RobotoSlab = Roboto_Slab({
@@ -19,16 +22,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={RobotoSlab.className}>
-        <OrderHistoryProvider>
-          <MenuProvider>
-            <OrderProvider>
-              <Toaster richColors position="top-center" />
-              <Navbar />
-              {children}
-            </OrderProvider>
-          </MenuProvider>
-        </OrderHistoryProvider>
+      <body
+        className={`${RobotoSlab.className} bg-gradient-to-b from-teal-50 to-teal-100 min-h-screen`}
+      >
+        <QueryProvider>
+          <UserProvider>
+            <OrderHistoryProvider>
+              <MenuProvider>
+                <OrderProvider>
+                  <Toaster richColors position="top-center" />
+                  <Navbar />
+                  <PrivateRoute>{children}</PrivateRoute>
+                </OrderProvider>
+              </MenuProvider>
+            </OrderHistoryProvider>
+          </UserProvider>
+        </QueryProvider>
       </body>
     </html>
   );

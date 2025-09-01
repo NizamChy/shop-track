@@ -7,11 +7,11 @@ const OrderTable = () => {
   const { orderItems, updateQuantity, removeItem } = useOrder();
 
   return (
-    <div className="bg-white overflow-auto p-2 lg:p-4">
+    <div className="overflow-auto p-2 lg:p-4">
       <h2 className="text-2xl mb-4">Order Items</h2>
       <div className="relative overflow-auto">
         <div className="overflow-x-auto rounded-lg">
-          <table className="min-w-full bg-white border mb-4">
+          <table className="min-w-full border mb-4">
             <thead>
               <tr className="bg-slate-50 border-b text-xs md:text-sm text-center text-gray-800 font-bold">
                 <th className="p-2 md:p-4 border-r">Product</th>
@@ -39,10 +39,9 @@ const OrderTable = () => {
             <tbody>
               {orderItems.map((item) => (
                 <tr
-                  key={item.id}
+                  key={item?._id?.toString()}
                   className="border-b text-xs md:text-sm text-center text-gray-800"
                 >
-                  {/* <td className="p-2 md:p-4 border-r">{item.name}</td> */}
                   <td className="p-0.5 md:p-4 border-r max-w-16">
                     <p className="break-words overflow-hidden text-ellipsis line-clamp-3">
                       {item.name}
@@ -51,7 +50,7 @@ const OrderTable = () => {
                   <td className="p-2 md:p-4 flex justify-center items-center">
                     <div className="flex items-center text-sm font-semibold">
                       <button
-                        onClick={() => updateQuantity(item.id, "decrease")}
+                        onClick={() => updateQuantity(item?._id, "decrease")}
                         className="px-2.5 sm:px-3 py-1 border border-gray-300 rounded-l-md hover:bg-gray-100"
                       >
                         -
@@ -60,7 +59,7 @@ const OrderTable = () => {
                         {item.quantity}
                       </span>
                       <button
-                        onClick={() => updateQuantity(item.id, "increase")}
+                        onClick={() => updateQuantity(item?._id, "increase")}
                         className="px-2.5 sm:px-3 py-1 border border-gray-300 rounded-r-md hover:bg-gray-100"
                       >
                         +
@@ -75,7 +74,7 @@ const OrderTable = () => {
                   </td>
                   <td className="p-2 md:p-4 flex justify-center">
                     <button
-                      onClick={() => removeItem(item.id)}
+                      onClick={() => removeItem(item?._id)}
                       className="rounded-md hover:text-red-500"
                       aria-label="Remove item"
                     >

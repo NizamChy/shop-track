@@ -24,16 +24,16 @@ export const OrderProvider = ({ children }) => {
 
   const { menuItems } = useMenu();
 
-  const filteredMenuItems = menuItems.filter((item) =>
+  const filteredMenuItems = menuItems?.filter((item) =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const addOrderItem = (item) => {
     setOrderItems((prevItems) => {
-      const existingItem = prevItems.find((i) => i.id === item.id);
+      const existingItem = prevItems?.find((i) => i?._id === item?._id);
       if (existingItem) {
         return prevItems.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+          i?._id === item?._id ? { ...i, quantity: i.quantity + 1 } : i
         );
       }
       return [...prevItems, { ...item, quantity: 1 }];
@@ -43,7 +43,7 @@ export const OrderProvider = ({ children }) => {
   const updateQuantity = (id, action) => {
     setOrderItems((prevItems) =>
       prevItems.map((item) => {
-        if (item.id === id) {
+        if (item._id === id) {
           if (action === "increase") {
             return { ...item, quantity: item.quantity + 1 };
           } else if (action === "decrease" && item.quantity > 1) {
@@ -56,7 +56,7 @@ export const OrderProvider = ({ children }) => {
   };
 
   const removeItem = (id) => {
-    setOrderItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    setOrderItems((prevItems) => prevItems.filter((item) => item?._id !== id));
   };
 
   const updateCustomerInfo = (name, value) => {

@@ -18,7 +18,6 @@ const page = () => {
 
           <CustomerInfo />
           <OrderTable />
-
           <ChargesForm />
           <CalculateTotal />
         </div>
