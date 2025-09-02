@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Toaster } from "sonner";
-import { Roboto_Slab } from "next/font/google";
+import { Roboto, Roboto_Slab } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
 import { MenuProvider } from "@/context/MenuContext";
 import { UserProvider } from "@/context/UserContext";
@@ -10,7 +10,12 @@ import QueryProvider from "@/components/Provider/QueryProvider";
 import { OrderHistoryProvider } from "@/context/OrderHistoryContext";
 import MobileNavbar from "@/components/Navbar/NavbarMobile";
 
-const RobotoSlab = Roboto_Slab({
+// const RobotoSlab = Roboto_Slab({
+//   weight: ["300", "400", "500", "600", "700"],
+//   subsets: ["latin"],
+// });
+
+const RobotoSlab = Roboto({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
@@ -20,11 +25,14 @@ export const metadata = {
   description: "Manage your business more easily with Shop Track",
 };
 
+// button color #f04c54
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
         className={`${RobotoSlab.className} bg-gradient-to-b from-teal-50 to-teal-100 min-h-screen`}
+        // className={`${RobotoSlab.className} bg-[#fbf9fc] min-h-screen`}
       >
         <QueryProvider>
           <UserProvider>
