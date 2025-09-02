@@ -59,7 +59,8 @@ const MenuItemCard = ({ item }) => {
             alt={item?.name}
             fill
             className="object-cover"
-            sizes="64px"
+            // sizes="64px"
+            sizes="200px"
           />
         </div>
 

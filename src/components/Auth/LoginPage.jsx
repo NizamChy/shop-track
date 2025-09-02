@@ -9,8 +9,8 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { useMutation } from "@tanstack/react-query";
 
 const LoginPage = () => {
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("+8801859168695");
+  const [password, setPassword] = useState("12356");
   const [isPasswordView, setIsPasswordView] = useState(false);
 
   // User Login
@@ -97,7 +97,7 @@ const LoginPage = () => {
                   htmlFor="password"
                   className="block text-gray-700 text-sm font-medium mb-2"
                 >
-                  Password
+                  Password -- Ex: 123456
                 </label>
 
                 <OtpInput setPassword={setPassword} />
