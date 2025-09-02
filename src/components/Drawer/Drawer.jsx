@@ -30,7 +30,7 @@ const Drawer = ({ isOpen, onClose }) => {
       />
 
       <div
-        className={`cartdrawer-container fixed top-0 right-0 h-full w-[90%] lg:w-96 bg-gradient-to-b from-teal-50 to-teal-100 shadow-lg z-50 transform transition-all duration-300 ease-in-out ${
+        className={`cartdrawer-container fixed top-0 right-0 h-full w-full md:w-[90%] lg:w-96 bg-grayBg shadow-lg z-50 transform transition-all duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >

@@ -54,7 +54,9 @@ const BusinessInfo = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Sales Overview</h1>
+      <h1 className="text-2xl font-bold mb-4 text-teal-600 text-center">
+        Sales Overview
+      </h1>
 
       <button
         className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-4"
@@ -87,7 +89,7 @@ const BusinessInfo = () => {
             {Array.from({ length: 3 })?.map((_, i) => (
               <div
                 key={i}
-                className="flex justify-between items-center w-full p-1 sm:p-4 rounded-lg border border-gray-200 bg-teal-50"
+                className="flex justify-between items-center w-full p-1 sm:p-4 rounded-lg border border-gray-200 bg-white"
               >
                 <div className="flex items-center gap-2 sm:gap-4 w-full min-w-0">
                   <div className="space-y-1 min-w-0 flex-1">
@@ -105,7 +107,7 @@ const BusinessInfo = () => {
           </div>
         </>
       ) : (
-        <div className="bg-teal-50 p-4 rounded shadow">
+        <div className="bg-white p-4 rounded shadow">
           <h2 className="text-xl font-semibold mb-2">
             Sales for {formatDate(selectedDate)}
           </h2>

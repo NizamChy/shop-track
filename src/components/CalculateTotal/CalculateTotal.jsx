@@ -93,7 +93,7 @@ const CalculateTotal = () => {
   return (
     <>
       <div className="flex flex-col justify-end items-end p-4 pe-10 lg:pe-16">
-        <div className="text-gray-800">
+        <div className="text-gray-600">
           <p className="flex justify-between gap-5">
             <span>Subtotal :</span> <span>{subtotal}৳</span>
           </p>
@@ -107,7 +107,7 @@ const CalculateTotal = () => {
           <p className="flex justify-between gap-5">
             <span>Discount :</span> <span>{charges.discount}৳</span>
           </p>
-          <p className="flex justify-between gap-5 font-bold">
+          <p className="flex justify-between gap-5 font-bold text-teal-600">
             <span>Total :</span> <span>{total}৳</span>
           </p>
         </div>

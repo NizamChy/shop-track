@@ -31,8 +31,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${RobotoSlab.className} bg-gradient-to-b from-teal-50 to-teal-100 min-h-screen`}
-        // className={`${RobotoSlab.className} bg-[#fbf9fc] min-h-screen`}
+        className={`${RobotoSlab.className} bg-grayBg min-h-screen`}
+        // className={`${RobotoSlab.className} bg-gradient-to-b from-teal-50 to-teal-100 min-h-screen`}
       >
         <QueryProvider>
           <UserProvider>

@@ -8,12 +8,13 @@ const OrderTable = () => {
 
   return (
     <div className="overflow-auto p-2 lg:p-4">
-      <h2 className="text-2xl mb-4">Order Items</h2>
+      <h2 className="text-2xl mb-4 text-teal-600">Order Items</h2>
       <div className="relative overflow-auto">
         <div className="overflow-x-auto rounded-lg">
           <table className="min-w-full border mb-4">
             <thead>
-              <tr className="bg-slate-50 border-b text-xs md:text-sm text-center text-gray-800 font-bold">
+              {/* <tr className="bg-slate-50 border-b text-xs md:text-sm text-center text-gray-800 font-bold"> */}
+              <tr className="bg-slate-50 border-b text-xs md:text-sm text-center text-teal-600 font-bold">
                 <th className="p-2 md:p-4 border-r">Product</th>
                 <th className="p-2 md:p-4 border-r">Quantity</th>
                 <th className="p-2 md:p-4 border-r">Price</th>
@@ -40,7 +41,7 @@ const OrderTable = () => {
               {orderItems.map((item) => (
                 <tr
                   key={item?._id?.toString()}
-                  className="border-b text-xs md:text-sm text-center text-gray-800"
+                  className="border-b text-xs md:text-sm bg-white text-center text-gray-800"
                 >
                   <td className="p-0.5 md:p-4 border-r max-w-16">
                     <p className="break-words overflow-hidden text-ellipsis line-clamp-3">

@@ -7,7 +7,7 @@ const DrawerItem = ({ onClose }) => {
   const { userInfo, logout } = useUser();
 
   return (
-    <div className="p-6 bg-gradient-to-b from-teal-100 to-teal-200 rounded-lg shadow-md max-w-sm w-full mx-auto">
+    <div className="p-6 bg-white rounded-lg shadow-md max-w-sm w-full mx-auto">
       {/* Header Section */}
       <div className="text-center mb-6">
         <div className="w-20 h-20 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">

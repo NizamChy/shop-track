@@ -8,7 +8,7 @@ function DatePicker() {
   const formattedDate = date.toISOString().substring(0, 10);
 
   return (
-    <div className="flex justify-evenly items-center">
+    <div className="flex justify-evenly items-center text-teal-600">
       <label htmlFor="todayDate" className="text-nowrap">
         Select Date:
       </label>

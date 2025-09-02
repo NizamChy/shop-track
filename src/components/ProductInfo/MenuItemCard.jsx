@@ -48,7 +48,7 @@ const MenuItemCard = ({ item }) => {
   };
 
   return (
-    <div className="flex justify-between items-center w-full p-1 sm:p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 cursor-pointer bg-teal-50">
+    <div className="flex justify-between items-center w-full p-1 sm:p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 cursor-pointer bg-white">
       <div className="flex items-center gap-2 sm:gap-4 w-full min-w-0">
         <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
           <Image

@@ -2,7 +2,8 @@ import React from "react";
 
 const MenuItemSkeleton = () => {
   return (
-    <div className="flex justify-between items-center w-full p-1 sm:p-4 rounded-lg border border-gray-200 bg-teal-50">
+    // <div className="flex justify-between items-center w-full p-1 sm:p-4 rounded-lg border border-gray-200 bg-teal-50">
+    <div className="flex justify-between items-center w-full p-1 sm:p-4 rounded-lg border border-gray-200 bg-white">
       <div className="flex items-center gap-2 sm:gap-4 w-full min-w-0">
         <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-gray-300 animate-pulse"></div>
 

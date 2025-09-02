@@ -4,7 +4,8 @@ import AllItem from "./AllItem";
 
 const ProductInfo = () => {
   return (
-    <section className="md:pt-20 pb-16 container mx-auto lg:max-w-2xl bg-gradient-to-b from-teal-50 to-teal-100">
+    // <section className="md:pt-20 pb-16 container mx-auto lg:max-w-2xl bg-gradient-to-b from-teal-50 to-teal-100">
+    <section className="md:pt-20 pb-16 container mx-auto lg:max-w-2xl">
       <AddItem />
       <AllItem />
     </section>

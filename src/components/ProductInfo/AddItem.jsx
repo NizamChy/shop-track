@@ -128,7 +128,7 @@ const AddItem = () => {
   };
 
   return (
-    <div id="add-edit-item-section" className="p-4">
+    <div id="add-edit-item-section" className="p-4 bg-white">
       <div className="p-6 mb-8 border rounded-lg shadow max-w-md mx-auto">
         <h2 className="text-xl font-bold mb-4 text-gray-800">
           {itemToEdit ? "Edit Item" : "Add New Item"}
