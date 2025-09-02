@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
+// API ENDPOINTS :
 const BASE_URL = "https://shop-track-server.vercel.app";
 const ADD_ITEM = "/api/v1/product/add";
 const ALL_ITEM = "/api/v1/product/all-product";
