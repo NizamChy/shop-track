@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed z-20 bg-white w-full border-b border-gray-200 shadow-sm">
+      <div className="hidden md:block fixed z-20 bg-teal-50 w-full border-b border-gray-200 shadow-sm">
         <nav className="min-h-16 flex gap-2 justify-center items-center relative py-2">
           <Link href="/">
             <div className="w-12 h-12">
@@ -52,19 +52,19 @@ const Navbar = () => {
               </li>
             ))}
 
-            <li>
+            {/* <li>
               <button
                 onClick={openModal}
                 className="border rounded-lg p-1 text-nowrap bg-teal-50 hover:bg-teal-200 hover:border-teal-300 cursor-pointer transition-all px-3 py-1.5 border-teal-100"
               >
                 Login
               </button>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>
 
-      <AuthModal isOpen={isModalOpen} onClose={closeModal} />
+      {/* <AuthModal isOpen={isModalOpen} onClose={closeModal} /> */}
     </>
   );
 };

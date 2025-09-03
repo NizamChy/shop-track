@@ -9,7 +9,7 @@ const MenuSearchBar = () => {
 
   return (
     <div className="flex justify-center items-center w-full">
-      <div className="max-w-[480px] w-full px-4">
+      <div className="max-w-sm w-full">
         <div className="relative">
           <input
             type="text"

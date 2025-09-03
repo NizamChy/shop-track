@@ -57,7 +57,7 @@ const BusinessInfo = () => {
         )}
       </div>
 
-      <div className="bg-white p-4 rounded shadow">
+      <div className="bg-teal-50 p-4 rounded shadow">
         <h2 className="text-xl font-semibold mb-2">
           Sales for {formatDate(selectedDate)}
         </h2>

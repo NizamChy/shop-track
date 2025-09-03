@@ -7,7 +7,7 @@ const OrderTable = () => {
   const { orderItems, updateQuantity, removeItem } = useOrder();
 
   return (
-    <div className="bg-white overflow-auto p-2 lg:p-4">
+    <div className="bg-teal-50 overflow-auto p-2 lg:p-4">
       <h2 className="text-2xl mb-4">Order Items</h2>
       <div className="relative overflow-auto">
         <div className="overflow-x-auto rounded-lg">

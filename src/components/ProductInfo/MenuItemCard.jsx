@@ -21,11 +21,12 @@ const MenuItemCard = ({ item }) => {
     };
 
     toast(
-      <div>
-        <p className="text-base font-semibold">
-          Are you sure you want to delete this item?
+      <>
+        <p className="text-base font-semibold mb-2">
+          Are you sure you want to delete{" "}
+          <span className="text-red-600">{item?.name}</span>?
         </p>
-        <div className="flex gap-2 justify-end py-2">
+        <div className="flex gap-2 justify-end">
           <button
             onClick={() => toast.dismiss()}
             className="px-3 py-1.5 text-sm text-teal-600 bg-teal-50 rounded-md transition-colors"
@@ -39,7 +40,7 @@ const MenuItemCard = ({ item }) => {
             Yes
           </button>
         </div>
-      </div>
+      </>
     );
   };
 
@@ -78,7 +79,7 @@ const MenuItemCard = ({ item }) => {
           </div>
         </div> */}
 
-      <div className="flex justify-between items-center w-full p-1 sm:p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 cursor-pointer bg-white">
+      <div className="flex justify-between items-center w-full p-1 sm:p-4 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 cursor-pointer bg-teal-50">
         <div className="flex items-center gap-2 sm:gap-4 w-full min-w-0">
           {/* Added min-w-0 and w-full */}
           <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">

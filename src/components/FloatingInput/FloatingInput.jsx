@@ -20,7 +20,7 @@ const FloatingInput = ({
           id={id}
           value={value}
           onChange={onChange}
-          className={`block w-full px-4 py-2 bg-transparent border rounded-md appearance-none outline-none transition-all resize-none
+          className={`block w-full bg-white px-4 py-2 bg-transparent border rounded-md appearance-none outline-none transition-all resize-none
                       ${
                         isFocused ? "border-teal-500" : "border-gray-300"
                       } ${size}`}
@@ -34,7 +34,7 @@ const FloatingInput = ({
           id={id}
           value={value}
           onChange={onChange}
-          className={`block w-full px-4 py-2 bg-transparent border rounded-md appearance-none outline-none transition-all
+          className={`block w-full bg-white px-4 py-2 bg-transparent border rounded-md appearance-none outline-none transition-all
                       ${
                         isFocused ? "border-teal-500" : "border-gray-300"
                       } ${size}`}
