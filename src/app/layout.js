@@ -1,14 +1,14 @@
 import "./globals.css";
 import { Toaster } from "sonner";
-import { Roboto, Roboto_Slab } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
 import { MenuProvider } from "@/context/MenuContext";
 import { UserProvider } from "@/context/UserContext";
 import { OrderProvider } from "@/context/OrderContext";
+import { Roboto, Roboto_Slab } from "next/font/google";
 import PrivateRoute from "@/components/Auth/PrivateRoute";
+import MobileNavbar from "@/components/Navbar/NavbarMobile";
 import QueryProvider from "@/components/Provider/QueryProvider";
 import { OrderHistoryProvider } from "@/context/OrderHistoryContext";
-import MobileNavbar from "@/components/Navbar/NavbarMobile";
 
 // const RobotoSlab = Roboto_Slab({
 //   weight: ["300", "400", "500", "600", "700"],

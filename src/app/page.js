@@ -1,13 +1,11 @@
 import React from "react";
 import DatePicker from "@/utils/DatePicker";
 import OrderTable from "@/components/orderTable/OrderTable";
+import MobileHeader from "@/components/Navbar/MobileHeader";
 import ChargesForm from "@/components/ChargesForm/ChargesForm";
 import CustomerInfo from "@/components/CustomerInfo/CustomerInfo";
 import MenuSearchBar from "@/components/MenuSearchBar/MenuSearchBar";
 import CalculateTotal from "@/components/CalculateTotal/CalculateTotal";
-import Image from "next/image";
-import Link from "next/link";
-import MobileHeader from "@/components/Navbar/MobileHeader";
 
 const page = () => {
   return (
